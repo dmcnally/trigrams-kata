@@ -26,10 +26,20 @@ This object is responsible for building the trigram hash. It takes a word at a t
 
 The object also has a 'generate' method.  This takes another object as a parameter and calls methods on it.
 
+    trigram_hash.generate(text_generator)
+
 
 ### Text Generator
 
-Used to generate a 
+Used to generate a document.  A text generator is passed to the generate method of the trigram hash.  The trigram hash will call methods on the text generate.  It is the responsibility of the text generate to string the words together to form a piece of text.
+
+A text generator responds to the following methods:
+
+  * on_start
+  * on_word(word)
+  * on_completed
+  
+The generated text is returned using the "to_s" method.
 
 ## Discussion Points
 
@@ -43,4 +53,4 @@ Used to generate a
      * Fix the random number generator?
      * Check the first and last word are reachable?
      * Validate the generated text against the trigram hash?
-
+       * Would checking each pair of words is a valid key suffice?
